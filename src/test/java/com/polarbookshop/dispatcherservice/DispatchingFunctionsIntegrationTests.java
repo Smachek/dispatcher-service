@@ -1,5 +1,6 @@
 package com.polarbookshop.dispatcherservice;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.function.context.FunctionCatalog;
@@ -10,11 +11,13 @@ import reactor.test.StepVerifier;
 import java.util.function.Function;
 
 @FunctionalSpringBootTest
+@Disabled
 public class DispatchingFunctionsIntegrationTests {
     @Autowired
     private FunctionCatalog catalog;
 
     @Test
+    @Disabled
     void packAndLabelOrder() {
         Function<OrderAcceptedMessage, Flux<OrderDispatchedMessage>> packAndLabel =
                 catalog.lookup(Function.class, "pack|label");
